@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSSMGDBModelStoreContainer" CdmEntityContainer="CSSMGDBEntities">
+    <EntitySetMapping Name="Cambios">
+      <EntityTypeMapping TypeName="CSSMGDBModel.Cambio">
+        <MappingFragment StoreEntitySet="Cambio">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdCambio" ColumnName="IdCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Combustivels">
+      <EntityTypeMapping TypeName="CSSMGDBModel.Combustivel">
+        <MappingFragment StoreEntitySet="Combustivel">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdCombustivel" ColumnName="IdCombustivel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cors">
+      <EntityTypeMapping TypeName="CSSMGDBModel.Cor">
+        <MappingFragment StoreEntitySet="Cor">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdCor" ColumnName="IdCor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Veiculoes">
+      <EntityTypeMapping TypeName="CSSMGDBModel.Veiculo">
+        <MappingFragment StoreEntitySet="Veiculo">
+          <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
+          <ScalarProperty Name="CambioID" ColumnName="CambioID" />
+          <ScalarProperty Name="CombustivelID" ColumnName="CombustivelID" />
+          <ScalarProperty Name="CorID" ColumnName="CorID" />
+          <ScalarProperty Name="FinalPlaca" ColumnName="FinalPlaca" />
+          <ScalarProperty Name="Quilometragem" ColumnName="Quilometragem" />
+          <ScalarProperty Name="AnoFabricacao" ColumnName="AnoFabricacao" />
+          <ScalarProperty Name="AnoModelo" ColumnName="AnoModelo" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="IdVeiculo" ColumnName="IdVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marcas">
+      <EntityTypeMapping TypeName="CSSMGDBModel.Marca">
+        <MappingFragment StoreEntitySet="Marca">
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

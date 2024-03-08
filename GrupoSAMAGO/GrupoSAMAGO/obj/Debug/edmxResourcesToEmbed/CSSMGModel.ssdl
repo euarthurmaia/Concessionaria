@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSSMGDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cambio">
+    <Key>
+      <PropertyRef Name="IdCambio" />
+    </Key>
+    <Property Name="IdCambio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Combustivel">
+    <Key>
+      <PropertyRef Name="IdCombustivel" />
+    </Key>
+    <Property Name="IdCombustivel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cor">
+    <Key>
+      <PropertyRef Name="IdCor" />
+    </Key>
+    <Property Name="IdCor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Marca">
+    <Key>
+      <PropertyRef Name="IdMarca" />
+    </Key>
+    <Property Name="IdMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Veiculo">
+    <Key>
+      <PropertyRef Name="IdVeiculo" />
+    </Key>
+    <Property Name="IdVeiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="1024" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="AnoModelo" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="AnoFabricacao" Type="int" Nullable="false" />
+    <Property Name="Quilometragem" Type="int" Nullable="false" />
+    <Property Name="FinalPlaca" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CorID" Type="int" Nullable="false" />
+    <Property Name="CombustivelID" Type="int" Nullable="false" />
+    <Property Name="CambioID" Type="int" Nullable="false" />
+    <Property Name="MarcaID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FKVeiculo_Cambio">
+    <End Role="Cambio" Type="Self.Cambio" Multiplicity="1" />
+    <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cambio">
+        <PropertyRef Name="IdCambio" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="CambioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVeiculo_Combustivel">
+    <End Role="Combustivel" Type="Self.Combustivel" Multiplicity="1" />
+    <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Combustivel">
+        <PropertyRef Name="IdCombustivel" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="CombustivelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVeiculo_Cor">
+    <End Role="Cor" Type="Self.Cor" Multiplicity="1" />
+    <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cor">
+        <PropertyRef Name="IdCor" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="CorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVeiculo_Marca">
+    <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+    <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marca">
+        <PropertyRef Name="IdMarca" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="MarcaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CSSMGDBModelStoreContainer">
+    <EntitySet Name="Cambio" EntityType="Self.Cambio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Combustivel" EntityType="Self.Combustivel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cor" EntityType="Self.Cor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Veiculo" EntityType="Self.Veiculo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FKVeiculo_Cambio" Association="Self.FKVeiculo_Cambio">
+      <End Role="Cambio" EntitySet="Cambio" />
+      <End Role="Veiculo" EntitySet="Veiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FKVeiculo_Combustivel" Association="Self.FKVeiculo_Combustivel">
+      <End Role="Combustivel" EntitySet="Combustivel" />
+      <End Role="Veiculo" EntitySet="Veiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FKVeiculo_Cor" Association="Self.FKVeiculo_Cor">
+      <End Role="Cor" EntitySet="Cor" />
+      <End Role="Veiculo" EntitySet="Veiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FKVeiculo_Marca" Association="Self.FKVeiculo_Marca">
+      <End Role="Marca" EntitySet="Marca" />
+      <End Role="Veiculo" EntitySet="Veiculo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

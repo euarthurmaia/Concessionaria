@@ -1,0 +1,104 @@
+CREATE TABLE [dbo].[Cambio] (
+    [IdCambio]  INT           IDENTITY (1, 1) NOT NULL,
+    [Descricao] VARCHAR (255) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdCambio] ASC)
+);
+
+SET IDENTITY_INSERT [dbo].[Cambio] ON
+INSERT INTO [dbo].[Cambio] ([IdCambio], [Descricao]) VALUES (1, N'Manual')
+INSERT INTO [dbo].[Cambio] ([IdCambio], [Descricao]) VALUES (2, N'Automático')
+INSERT INTO [dbo].[Cambio] ([IdCambio], [Descricao]) VALUES (3, N'CVT')
+SET IDENTITY_INSERT [dbo].[Cambio] OFF
+
+
+CREATE TABLE [dbo].[Combustivel] (
+    [IdCombustivel] INT           IDENTITY (1, 1) NOT NULL,
+    [Descricao]     VARCHAR (255) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdCombustivel] ASC)
+);
+
+
+SET IDENTITY_INSERT [dbo].[Combustivel] ON
+INSERT INTO [dbo].[Combustivel] ([IdCombustivel], [Descricao]) VALUES (1, N'Gasolina')
+INSERT INTO [dbo].[Combustivel] ([IdCombustivel], [Descricao]) VALUES (2, N'Álcool')
+INSERT INTO [dbo].[Combustivel] ([IdCombustivel], [Descricao]) VALUES (3, N'Flex')
+INSERT INTO [dbo].[Combustivel] ([IdCombustivel], [Descricao]) VALUES (4, N'Diesel')
+SET IDENTITY_INSERT [dbo].[Combustivel] OFF
+
+CREATE TABLE [dbo].[Cor] (
+    [IdCor]     INT           IDENTITY (1, 1) NOT NULL,
+    [Descricao] VARCHAR (255) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdCor] ASC)
+);
+
+SET IDENTITY_INSERT [dbo].[Cor] ON
+INSERT INTO [dbo].[Cor] ([IdCor], [Descricao]) VALUES (1, N'Branco')
+INSERT INTO [dbo].[Cor] ([IdCor], [Descricao]) VALUES (2, N'Preto')
+INSERT INTO [dbo].[Cor] ([IdCor], [Descricao]) VALUES (3, N'Vermelho')
+INSERT INTO [dbo].[Cor] ([IdCor], [Descricao]) VALUES (4, N'Cinza')
+INSERT INTO [dbo].[Cor] ([IdCor], [Descricao]) VALUES (5, N'Amarelo')
+SET IDENTITY_INSERT [dbo].[Cor] OFF
+
+CREATE TABLE [dbo].[Marca] (
+    [IdMarca]   INT           IDENTITY (1, 1) NOT NULL,
+    [Descricao] VARCHAR (255) NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdMarca] ASC)
+);
+
+SET IDENTITY_INSERT [dbo].[Marca] ON
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (1, N'HONDA')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (2, N'JEEP')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (3, N'PORSCHE')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (4, N'VOLKSWAGEN')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (5, N'TOYOTA')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (6, N'RAM')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (7, N'LAND ROVER')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (8, N'FERRARI')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (9, N'TESLA')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (10, N'HYUNDAI')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (11, N'CHEVROLET')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (12, N'BMW')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (13, N'FIAT')
+INSERT INTO [dbo].[Marca] ([IdMarca], [Descricao]) VALUES (14, N'AUDI')
+SET IDENTITY_INSERT [dbo].[Marca] OFF
+
+
+CREATE TABLE [dbo].[Veiculo] (
+    [IdVeiculo]     INT            IDENTITY (1, 1) NOT NULL,
+    [Nome]          VARCHAR (255)  NOT NULL,
+    [Descricao]     VARCHAR (1024) NOT NULL,
+    [Valor]         DECIMAL (9, 2) NOT NULL,
+    [AnoModelo]     VARCHAR (11)   NOT NULL,
+    [AnoFabricacao] INT            NOT NULL,
+    [Quilometragem] INT            NOT NULL,
+    [FinalPlaca]    CHAR (1)       NOT NULL,
+    [CorID]         INT            NOT NULL,
+    [CombustivelID] INT            NOT NULL,
+    [CambioID]      INT            NOT NULL,
+    [MarcaID]       INT            NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdVeiculo] ASC),
+    CONSTRAINT [FKVeiculo_Cor] FOREIGN KEY ([CorID]) REFERENCES [dbo].[Cor] ([IdCor]),
+    CONSTRAINT [FKVeiculo_Combustivel] FOREIGN KEY ([CombustivelID]) REFERENCES [dbo].[Combustivel] ([IdCombustivel]),
+    CONSTRAINT [FKVeiculo_Cambio] FOREIGN KEY ([CambioID]) REFERENCES [dbo].[Cambio] ([IdCambio]),
+    CONSTRAINT [FKVeiculo_Marca] FOREIGN KEY ([MarcaID]) REFERENCES [dbo].[Marca] ([IdMarca])
+);
+
+SET IDENTITY_INSERT [dbo].[Veiculo] ON
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (1, N'HONDA CIVIC', N' Este elegante Honda Civic, fabricado em 2019, é um sedan de cor predominantemente branca, impulsionado pela eficiência da gasolina e álcool. Com apenas 19.000 km rodados, seu câmbio CVT oferece uma experiência de condução suave. Com final de placa 5, este veículo está em excelente estado. Seu valor é de R$ 164.900,00.', CAST(164900.00 AS Decimal(9, 2)), N'2019/2020', 2019, 19000, N'5', 1, 3, 3, 1)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (2, N'WILLYS OVERLAND JEEP', N'Um verdadeiro clássico, o Willys Overland Jeep de 1960 em tom vermelho é um utilitário nostálgico. Movido a gasolina, com câmbio manual, este veículo de fabricação 1960 acumulou 80.000 km ao longo de sua jornada. O final de placa é 9, e está disponível por R$ 40.000,00.', CAST(40000.00 AS Decimal(9, 2)), N'1960/1960', 1960, 80000, N'9', 3, 1, 1, 2)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (3, N'PORSCHE CAYENNE', N'O Porsche Cayenne de 2020, na cor branca, personifica o luxo e o desempenho. Este esportivo, com apenas 24.924 km rodados, utiliza gasolina como combustível e possui um câmbio automático para uma experiência de condução imersiva. Seu final de placa é 7, e seu preço é de R$ 550.000,00.', CAST(550000.00 AS Decimal(9, 2)), N'2020/2020', 2020, 24924, N'7', 1, 1, 2, 3)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (4, N'VOLKSWAGEN FUSCA', N'Um clássico atemporal, o Volkswagen Fusca de 1994 em branco é um sedan nostálgico. Movido a gasolina, com câmbio manual, este veículo apresenta uma quilometragem de 39.643 km. Com final de placa 5, está disponível por R$ 23.900,00.', CAST(23900.00 AS Decimal(9, 2)), N'1994/1994', 1994, 39643, N'5', 1, 1, 1, 4)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (5, N'TOYOTA COROLLA', N'Este moderno Toyota Corolla, fabricado em 2022, ostenta uma elegante cor branca. Movido a gasolina e álcool, possui um câmbio automático, proporcionando uma condução confortável ao longo de seus 43.216 km. Com final de placa 4, está disponível por R$ 130.000,00.', CAST(130000.00 AS Decimal(9, 2)), N'2022/2023', 2022, 43216, N'4', 1, 3, 2, 5)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (6, N'DODGE RAM', N'A imponente Dodge Ram, ano de fabricação 2020, é uma picape que combina robustez e estilo. Seu exterior em branco destaca sua presença marcante. Equipada com um motor a diesel, essa picape oferece potência e eficiência. Com uma quilometragem de 38.000 km, este veículo demonstra durabilidade e resistência. Seu final de placa é 4, adicionando um toque de exclusividade. Com um valor de R$ 500.000,00, esta Dodge Ram é a escolha ideal para quem busca performance e versatilidade em uma picape.', CAST(499900.00 AS Decimal(9, 2)), N'2020/2020', 2020, 38000, N'4', 1, 4, 2, 6)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (12, N'LAND ROVER RANGE ROVER VELAR', N'O Land Rover Range Rover Velar 2021 é um esportivo de luxo, fabricado no mesmo ano, com uma elegante cor preta e apenas 9.552 km rodados. Movido a gasolina, possui transmissão automática, final de placa 8, e está disponível por R$ 619.000,00. Este veículo combina sofisticação, potência e exclusividade, proporcionando uma experiência de condução excepcional.', CAST(619000.00 AS Decimal(9, 2)), N'2021/2021', 2021, 9552, N'8', 2, 1, 2, 7)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (13, N'FERRARI CALIFORNIA', N'A Ferrari California 2014, um esportivo emblemático na cor vermelha, fabricado em 2014, apresenta apenas 9.552 km. Impulsionada por gasolina e com transmissão automática, seu final de placa é 7. Este exemplar exclusivo está disponível por R$ 2.500.000,00, representando a fusão de desempenho excepcional e o prestígio característico da marca Ferrari.', CAST(2500000.00 AS Decimal(9, 2)), N'2014/2015', 2014, 5490, N'7', 3, 1, 2, 8)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (14, N'TESLA MODEL S', N'Um sedan elegante e moderno, o Tesla Model S combina desempenho excepcional com tecnologia de ponta. Seu design arrojado e inovador destaca-se, enquanto sua motorização híbrida oferece uma condução eficiente e sustentável.', CAST(529990.00 AS Decimal(9, 2)), N'2019/2019', 2019, 23643, N'6', 2, 1, 2, 9)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (16, N'HYUNDAI HB20', N'O Hyundai HB20, um hatch compacto e ágil, apresenta um design moderno e eficiência energética. Com baixa quilometragem, é uma opção atraente para quem busca economia e praticidade.', CAST(70000.00 AS Decimal(9, 2)), N'2022/2023', 2022, 50000, N'7', 2, 3, 1, 10)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (17, N'VOLKSWAGEN VIRTUS', N'O Volkswagen Virtus, um sedan sofisticado, oferece conforto e tecnologia avançada. Com baixa quilometragem, é uma escolha moderna para quem busca um veículo elegante e eficiente.', CAST(124500.00 AS Decimal(9, 2)), N'2023/2023', 2023, 6000, N'2', 4, 3, 2, 4)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (18, N'CHEVROLET CAMARO', N'O Chevrolet Camaro, um cupê esportivo e potente, destaca-se pelo design marcante e pelo desempenho de alto nível. Uma opção para quem aprecia carros esportivos clássicos.', CAST(219890.00 AS Decimal(9, 2)), N'2012/2012', 2012, 38846, N'8', 5, 1, 2, 11)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (19, N'
+CHEVROLET ONIX', N'O Chevrolet Onix Sedan, um carro compacto e econômico, oferece praticidade e eficiência. Com baixa quilometragem, é uma opção acessível para quem busca um veículo urbano.', CAST(61490.00 AS Decimal(9, 2)), N'2021/2021', 2021, 84611, N'9', 1, 3, 1, 11)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (20, N'BMW X4', N'O BMW X4, um utilitário esportivo de luxo, une design sofisticado, desempenho potente e tecnologia avançada. Uma opção para quem busca estilo e conforto em um veículo utilitário.', CAST(400000.00 AS Decimal(9, 2)), N'2018/2019', 2018, 22965, N'8', 4, 1, 2, 12)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (22, N'FIAT UNO', N'O Fiat Uno, um hatch compacto e econômico, é conhecido pela sua praticidade e baixo consumo de combustível. Ideal para quem busca um veículo urbano e de fácil manutenção.', CAST(25800.00 AS Decimal(9, 2)), N'2013/2013', 2013, 132545, N'2', 1, 3, 1, 13)
+INSERT INTO [dbo].[Veiculo] ([IdVeiculo], [Nome], [Descricao], [Valor], [AnoModelo], [AnoFabricacao], [Quilometragem], [FinalPlaca], [CorID], [CombustivelID], [CambioID], [MarcaID]) VALUES (23, N'AUDI R8', N'O Audi R8, um cupê esportivo de alto desempenho, combina luxo, tecnologia e velocidade. Uma escolha para entusiastas que buscam uma experiência de condução emocionante.', CAST(1000000.00 AS Decimal(9, 2)), N'2013/2014', 2013, 20112, N'3', 1, 1, 2, 14)
+SET IDENTITY_INSERT [dbo].[Veiculo] OFF

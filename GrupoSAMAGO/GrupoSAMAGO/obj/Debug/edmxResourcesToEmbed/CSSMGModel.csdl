@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSSMGDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CSSMGDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cambios" EntityType="CSSMGDBModel.Cambio" />
+    <EntitySet Name="Combustivels" EntityType="CSSMGDBModel.Combustivel" />
+    <EntitySet Name="Cors" EntityType="CSSMGDBModel.Cor" />
+    <EntitySet Name="Veiculoes" EntityType="CSSMGDBModel.Veiculo" />
+    <AssociationSet Name="FKVeiculo_Cambio" Association="CSSMGDBModel.FKVeiculo_Cambio">
+      <End Role="Cambio" EntitySet="Cambios" />
+      <End Role="Veiculo" EntitySet="Veiculoes" />
+    </AssociationSet>
+    <AssociationSet Name="FKVeiculo_Combustivel" Association="CSSMGDBModel.FKVeiculo_Combustivel">
+      <End Role="Combustivel" EntitySet="Combustivels" />
+      <End Role="Veiculo" EntitySet="Veiculoes" />
+    </AssociationSet>
+    <AssociationSet Name="FKVeiculo_Cor" Association="CSSMGDBModel.FKVeiculo_Cor">
+      <End Role="Cor" EntitySet="Cors" />
+      <End Role="Veiculo" EntitySet="Veiculoes" />
+    </AssociationSet>
+    <EntitySet Name="Marcas" EntityType="CSSMGDBModel.Marca" />
+    <AssociationSet Name="FKVeiculo_Marca" Association="CSSMGDBModel.FKVeiculo_Marca">
+      <End Role="Marca" EntitySet="Marcas" />
+      <End Role="Veiculo" EntitySet="Veiculoes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cambio">
+    <Key>
+      <PropertyRef Name="IdCambio" />
+    </Key>
+    <Property Name="IdCambio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Cambio" FromRole="Cambio" ToRole="Veiculo" />
+  </EntityType>
+  <EntityType Name="Combustivel">
+    <Key>
+      <PropertyRef Name="IdCombustivel" />
+    </Key>
+    <Property Name="IdCombustivel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Combustivel" FromRole="Combustivel" ToRole="Veiculo" />
+  </EntityType>
+  <EntityType Name="Cor">
+    <Key>
+      <PropertyRef Name="IdCor" />
+    </Key>
+    <Property Name="IdCor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Cor" FromRole="Cor" ToRole="Veiculo" />
+  </EntityType>
+  <EntityType Name="Veiculo">
+    <Key>
+      <PropertyRef Name="IdVeiculo" />
+    </Key>
+    <Property Name="IdVeiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="AnoModelo" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="AnoFabricacao" Type="Int32" Nullable="false" />
+    <Property Name="Quilometragem" Type="Int32" Nullable="false" />
+    <Property Name="FinalPlaca" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CorID" Type="Int32" Nullable="false" />
+    <Property Name="CombustivelID" Type="Int32" Nullable="false" />
+    <Property Name="CambioID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cambio" Relationship="CSSMGDBModel.FKVeiculo_Cambio" FromRole="Veiculo" ToRole="Cambio" />
+    <NavigationProperty Name="Combustivel" Relationship="CSSMGDBModel.FKVeiculo_Combustivel" FromRole="Veiculo" ToRole="Combustivel" />
+    <NavigationProperty Name="Cor" Relationship="CSSMGDBModel.FKVeiculo_Cor" FromRole="Veiculo" ToRole="Cor" />
+    <Property Name="MarcaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Marca" Relationship="CSSMGDBModel.FKVeiculo_Marca" FromRole="Veiculo" ToRole="Marca" />
+  </EntityType>
+  <Association Name="FKVeiculo_Cambio">
+    <End Type="CSSMGDBModel.Cambio" Role="Cambio" Multiplicity="1" />
+    <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cambio">
+        <PropertyRef Name="IdCambio" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="CambioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVeiculo_Combustivel">
+    <End Type="CSSMGDBModel.Combustivel" Role="Combustivel" Multiplicity="1" />
+    <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Combustivel">
+        <PropertyRef Name="IdCombustivel" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="CombustivelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKVeiculo_Cor">
+    <End Type="CSSMGDBModel.Cor" Role="Cor" Multiplicity="1" />
+    <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cor">
+        <PropertyRef Name="IdCor" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="CorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Marca">
+    <Key>
+      <PropertyRef Name="IdMarca" />
+    </Key>
+    <Property Name="IdMarca" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Marca" FromRole="Marca" ToRole="Veiculo" />
+  </EntityType>
+  <Association Name="FKVeiculo_Marca">
+    <End Type="CSSMGDBModel.Marca" Role="Marca" Multiplicity="1" />
+    <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marca">
+        <PropertyRef Name="IdMarca" />
+      </Principal>
+      <Dependent Role="Veiculo">
+        <PropertyRef Name="MarcaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

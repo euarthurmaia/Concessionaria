@@ -1,0 +1,196 @@
+﻿.faixa{
+    background-color: #4771fb;
+    width: 100%;
+    text-align: center;
+}
+
+    .faixa label{
+        color: white;
+    }
+
+#nav {
+    display: flex;
+    height: 4vw;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 100%;
+    width: 11%;
+    text-align: center;
+    margin-top: 1%;
+}
+
+.logo input[type=image] {
+    max-width: 100%;
+    height: auto;
+}
+
+    
+
+.info {
+    height: 100%;
+    width: 53%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .info a {
+        text-decoration: none;
+        margin: 0 1vw;
+        font-size: 17px;
+        font-weight: bold;
+        color: #808080;
+    }
+
+.buscar {
+    width: 30%;
+    height: 50%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+
+    #Pesquisar{
+        height: 1.6vw;
+        width: 4vw;
+        background-color: gray;
+        color: white;
+        border: none;
+    }
+
+    .buscar table td{
+        background-color: #FFFFFF;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    #BarraPesquisa {
+        width: 50%;
+    }
+
+#txtPesquisa {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+#lstResultados {
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+
+footer h5 {
+    color: blue;
+    text-align: left;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+footer {
+    width: 100%;
+    height: 24vw;
+    border-top: 0.10em solid blue;
+    background-color: #a5a5a5;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: black;
+}
+
+.footer-top {
+    width: 100%;
+    height: 58%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1vw;
+}
+
+.footer-1 {
+    width: 20%;
+    height: 50%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+    .footer-1 label {
+        display: block; 
+        text-align: left;
+    }
+
+.footer-2 {
+    width: 20%;
+    height: 50%;
+    text-align: center;
+}
+
+    .footer-2 label {
+        display: block;
+        text-align: left;
+    }
+
+.footer-3 {
+    width: 20%;
+    height: 50%;
+    margin-right: 10%;
+    text-align: left;
+}
+
+    .footer-3 label {
+        display: block;
+        text-align: left;
+    }
+
+    .footer-3 a svg:hover .muda-cor {
+        fill: blue;
+    }
+
+    .footer-3 svg {
+        width: 2vw;
+        height: 2vw;
+    }
+
+.footer-down {
+    width: 100%;
+    height: 30%;
+    justify-content: center;
+    display: flex;
+}
+
+.footer-4 {
+    width: 100%;
+    height: 70%;
+    margin-top: 2%;
+    text-align: center;
+    display: block;
+}
+
+    .footer-4 img {
+        max-width: 8%;
+        height: auto;
+    }
+
+
+@media (max-width: 730px) {
+    .info {
+        display: none;
+    }
+
+    #nav{
+        justify-content: center;
+        height: 5vw;
+    }
+
+    .buscar{
+        display: none;
+    }
+
+    footer{
+        height: auto;
+    }
+}
