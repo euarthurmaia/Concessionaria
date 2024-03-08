@@ -1,0 +1,249 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    background-color: #CCC;
+}
+
+.imagem-veiculo{
+    width: 100%;
+    display: flex;
+    margin: 0 0 4% 0;
+    text-align: center;
+    align-items: center;
+}
+
+.imagem-esq {
+   
+}
+
+        .imagem-esq img {
+            width: 75%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+
+    .imagem-esq:hover img {
+        transform: scale(1.2);
+    }
+
+.imagem-cen {
+
+}
+
+    .imagem-cen img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .imagem-cen:hover img {
+        transform: scale(1.1);
+    }
+
+
+.imagem-dir {
+
+}
+
+    .imagem-dir img {
+        max-width: 75%;
+        height: auto;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .imagem-dir:hover img {
+        transform: scale(1.2);
+    }
+
+
+.info-produto{
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 4%;
+
+}
+
+    .info-veiculo {
+        width: 70%;
+    }
+
+    .tamanho-info{
+        border-radius: 10px;
+        background-color: #FFFFFF;
+    }
+
+        .logo-nome{
+            width: 100%;
+            display: flex;
+        }
+
+            .logo-marca {
+                width: 14%;
+                text-align: center;
+            }
+
+                .logo-marca img{
+                    max-width: 70%;
+                    height: auto;
+                }
+
+            .nome-veiculo {
+                width: 86%;
+
+            }
+
+        .sobre-veiculo {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+            .label-descricao{
+                color: #423c3c;
+            }
+
+            .class-sobre {
+                text-align: center;
+                margin: 0 3%;
+                
+            }
+
+            .descricao-veiculo {
+                width: 94%;
+                margin: 2% 3% 7% 3%;
+                display: block;
+            }
+
+
+    .contato {
+        width: 27%;
+        border-radius: 10px;
+        background-color: #FFFFFF;
+        text-align: center;
+    }
+
+    .contato h3{
+        font-weight: bold;
+    }
+
+    .contato input[type=text]{
+        width: 94%;
+        margin: 1% 0;
+        height: 3vw;
+    }
+
+    .mensagem{
+        margin: 1% 0;
+    }
+
+        .mensagem textarea {
+            resize: none; 
+            width: 94%;
+        }
+
+        .contato input[type=submit]{
+            border-radius: 10px;
+            border: none;
+            background-color: blue;
+            color: white;
+            height: 3vw;
+            margin-bottom: 3vw;
+        }
+
+
+@media (max-width: 865px) {
+    .imagem-veiculo {
+        width: 100%;
+        display: flex;
+        margin: 0 0 4% 0;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .imagem-esq {
+        display: none;
+    }
+    .imagem-cen {
+    }
+
+        .imagem-cen img {
+            width: 84%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .imagem-cen:hover img {
+            transform: scale(1.05);
+        }
+
+    .imagem-dir{
+        display: none;
+    }
+
+    .info-produto {
+        width: 84%;
+        display: block;
+        margin: 0 8%;
+    }
+
+    .info-veiculo {
+        width: 100%;
+    }
+
+    .tamanho-info {
+        border-radius: 10px;
+        background-color: #FFFFFF;
+    }
+
+    .class-sobre {
+        flex-basis: 20%;
+    }
+
+    .contato {
+        margin: 4% 0;
+        width: 100%;
+        text-align: center;
+    }
+
+        .contato input[type=text] {
+            width: 94%;
+            margin: 1% 0;
+            height: 7vw;
+        }
+
+    .mensagem {
+        margin: 1% 0;
+    }
+
+        .mensagem textarea {
+            resize: none;
+            width: 94%;
+        }
+
+    .contato input[type=submit] {
+        border: none;
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        height: 8vw;
+        margin-bottom: 3vw;
+    }
+
+}
+
+@media (min-width: 865px) and (max-width: 1305px) {
+    .class-sobre {
+        flex-basis: 20%;
+    }
+}

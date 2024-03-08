@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CSSMGDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cambio">
+          <Key>
+            <PropertyRef Name="IdCambio" />
+          </Key>
+          <Property Name="IdCambio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Combustivel">
+          <Key>
+            <PropertyRef Name="IdCombustivel" />
+          </Key>
+          <Property Name="IdCombustivel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cor">
+          <Key>
+            <PropertyRef Name="IdCor" />
+          </Key>
+          <Property Name="IdCor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="IdMarca" />
+          </Key>
+          <Property Name="IdMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="IdVeiculo" />
+          </Key>
+          <Property Name="IdVeiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="AnoModelo" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="AnoFabricacao" Type="int" Nullable="false" />
+          <Property Name="Quilometragem" Type="int" Nullable="false" />
+          <Property Name="FinalPlaca" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CorID" Type="int" Nullable="false" />
+          <Property Name="CombustivelID" Type="int" Nullable="false" />
+          <Property Name="CambioID" Type="int" Nullable="false" />
+          <Property Name="MarcaID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FKVeiculo_Cambio">
+          <End Role="Cambio" Type="Self.Cambio" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cambio">
+              <PropertyRef Name="IdCambio" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="CambioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKVeiculo_Combustivel">
+          <End Role="Combustivel" Type="Self.Combustivel" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combustivel">
+              <PropertyRef Name="IdCombustivel" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="CombustivelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKVeiculo_Cor">
+          <End Role="Cor" Type="Self.Cor" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cor">
+              <PropertyRef Name="IdCor" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="CorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKVeiculo_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="IdMarca" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="MarcaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CSSMGDBModelStoreContainer">
+          <EntitySet Name="Cambio" EntityType="Self.Cambio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Combustivel" EntityType="Self.Combustivel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cor" EntityType="Self.Cor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veiculo" EntityType="Self.Veiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKVeiculo_Cambio" Association="Self.FKVeiculo_Cambio">
+            <End Role="Cambio" EntitySet="Cambio" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FKVeiculo_Combustivel" Association="Self.FKVeiculo_Combustivel">
+            <End Role="Combustivel" EntitySet="Combustivel" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FKVeiculo_Cor" Association="Self.FKVeiculo_Cor">
+            <End Role="Cor" EntitySet="Cor" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FKVeiculo_Marca" Association="Self.FKVeiculo_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Veiculo" EntitySet="Veiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CSSMGDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CSSMGDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Cambios" EntityType="CSSMGDBModel.Cambio" />
+          <EntitySet Name="Combustivels" EntityType="CSSMGDBModel.Combustivel" />
+          <EntitySet Name="Cors" EntityType="CSSMGDBModel.Cor" />
+          <EntitySet Name="Veiculoes" EntityType="CSSMGDBModel.Veiculo" />
+          <AssociationSet Name="FKVeiculo_Cambio" Association="CSSMGDBModel.FKVeiculo_Cambio">
+            <End Role="Cambio" EntitySet="Cambios" />
+            <End Role="Veiculo" EntitySet="Veiculoes" />
+          </AssociationSet>
+          <AssociationSet Name="FKVeiculo_Combustivel" Association="CSSMGDBModel.FKVeiculo_Combustivel">
+            <End Role="Combustivel" EntitySet="Combustivels" />
+            <End Role="Veiculo" EntitySet="Veiculoes" />
+          </AssociationSet>
+          <AssociationSet Name="FKVeiculo_Cor" Association="CSSMGDBModel.FKVeiculo_Cor">
+            <End Role="Cor" EntitySet="Cors" />
+            <End Role="Veiculo" EntitySet="Veiculoes" />
+          </AssociationSet>
+          <EntitySet Name="Marcas" EntityType="CSSMGDBModel.Marca" />
+          <AssociationSet Name="FKVeiculo_Marca" Association="CSSMGDBModel.FKVeiculo_Marca">
+            <End Role="Marca" EntitySet="Marcas" />
+            <End Role="Veiculo" EntitySet="Veiculoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cambio">
+          <Key>
+            <PropertyRef Name="IdCambio" />
+          </Key>
+          <Property Name="IdCambio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Cambio" FromRole="Cambio" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Combustivel">
+          <Key>
+            <PropertyRef Name="IdCombustivel" />
+          </Key>
+          <Property Name="IdCombustivel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Combustivel" FromRole="Combustivel" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Cor">
+          <Key>
+            <PropertyRef Name="IdCor" />
+          </Key>
+          <Property Name="IdCor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Cor" FromRole="Cor" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="IdVeiculo" />
+          </Key>
+          <Property Name="IdVeiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="AnoModelo" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="AnoFabricacao" Type="Int32" Nullable="false" />
+          <Property Name="Quilometragem" Type="Int32" Nullable="false" />
+          <Property Name="FinalPlaca" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CorID" Type="Int32" Nullable="false" />
+          <Property Name="CombustivelID" Type="Int32" Nullable="false" />
+          <Property Name="CambioID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cambio" Relationship="CSSMGDBModel.FKVeiculo_Cambio" FromRole="Veiculo" ToRole="Cambio" />
+          <NavigationProperty Name="Combustivel" Relationship="CSSMGDBModel.FKVeiculo_Combustivel" FromRole="Veiculo" ToRole="Combustivel" />
+          <NavigationProperty Name="Cor" Relationship="CSSMGDBModel.FKVeiculo_Cor" FromRole="Veiculo" ToRole="Cor" />
+          <Property Name="MarcaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Marca" Relationship="CSSMGDBModel.FKVeiculo_Marca" FromRole="Veiculo" ToRole="Marca" />
+        </EntityType>
+        <Association Name="FKVeiculo_Cambio">
+          <End Type="CSSMGDBModel.Cambio" Role="Cambio" Multiplicity="1" />
+          <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cambio">
+              <PropertyRef Name="IdCambio" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="CambioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKVeiculo_Combustivel">
+          <End Type="CSSMGDBModel.Combustivel" Role="Combustivel" Multiplicity="1" />
+          <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combustivel">
+              <PropertyRef Name="IdCombustivel" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="CombustivelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKVeiculo_Cor">
+          <End Type="CSSMGDBModel.Cor" Role="Cor" Multiplicity="1" />
+          <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cor">
+              <PropertyRef Name="IdCor" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="CorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="IdMarca" />
+          </Key>
+          <Property Name="IdMarca" Type="Int32" Nullable="false" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Veiculoes" Relationship="CSSMGDBModel.FKVeiculo_Marca" FromRole="Marca" ToRole="Veiculo" />
+        </EntityType>
+        <Association Name="FKVeiculo_Marca">
+          <End Type="CSSMGDBModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="CSSMGDBModel.Veiculo" Role="Veiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="IdMarca" />
+            </Principal>
+            <Dependent Role="Veiculo">
+              <PropertyRef Name="MarcaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CSSMGDBModelStoreContainer" CdmEntityContainer="CSSMGDBEntities" >
+          <EntitySetMapping Name="Cambios">
+            <EntityTypeMapping TypeName="CSSMGDBModel.Cambio">
+              <MappingFragment StoreEntitySet="Cambio">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdCambio" ColumnName="IdCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Combustivels">
+            <EntityTypeMapping TypeName="CSSMGDBModel.Combustivel">
+              <MappingFragment StoreEntitySet="Combustivel">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdCombustivel" ColumnName="IdCombustivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cors">
+            <EntityTypeMapping TypeName="CSSMGDBModel.Cor">
+              <MappingFragment StoreEntitySet="Cor">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdCor" ColumnName="IdCor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veiculoes">
+            <EntityTypeMapping TypeName="CSSMGDBModel.Veiculo">
+              <MappingFragment StoreEntitySet="Veiculo">
+                <ScalarProperty Name="MarcaID" ColumnName="MarcaID" />
+                <ScalarProperty Name="CambioID" ColumnName="CambioID" />
+                <ScalarProperty Name="CombustivelID" ColumnName="CombustivelID" />
+                <ScalarProperty Name="CorID" ColumnName="CorID" />
+                <ScalarProperty Name="FinalPlaca" ColumnName="FinalPlaca" />
+                <ScalarProperty Name="Quilometragem" ColumnName="Quilometragem" />
+                <ScalarProperty Name="AnoFabricacao" ColumnName="AnoFabricacao" />
+                <ScalarProperty Name="AnoModelo" ColumnName="AnoModelo" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="IdVeiculo" ColumnName="IdVeiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="CSSMGDBModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="71a1bb21fcca44afa724404d5344c3d8" Name="Diagram1" >
+        <EntityTypeShape EntityType="CSSMGDBModel.Cambio" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CSSMGDBModel.Combustivel" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="CSSMGDBModel.Cor" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="CSSMGDBModel.Veiculo" Width="1.5" PointX="3" PointY="2.5" />
+        <AssociationConnector Association="CSSMGDBModel.FKVeiculo_Cambio" />
+        <AssociationConnector Association="CSSMGDBModel.FKVeiculo_Combustivel" />
+        <AssociationConnector Association="CSSMGDBModel.FKVeiculo_Cor" />
+        <EntityTypeShape EntityType="CSSMGDBModel.Marca" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="CSSMGDBModel.FKVeiculo_Marca" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,440 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    background-color: #CCC;
+}
+
+.filtro {
+    width: 27%;
+    margin: 2% 0 0 3%;
+}
+
+.tamanho-filtro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 2vw;
+}
+
+#botoes {
+    justify-content: center;
+}
+
+    .titulo-filtro{
+        height: 5%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .caixa-filtro {
+        display: block;
+        width: 96%;
+    }
+
+        .marcas-carros {
+            width: 100%;
+            
+        }
+
+        .valor {
+            width: 100%;
+           
+            display: flex;
+        }
+
+        .ano-filtro {
+            width: 100%;
+            
+            display: flex;
+        }
+
+        .km-filtro {
+            width: 100%;
+
+            display: flex;
+        }
+
+        .combustivel {
+            width: 100%;
+
+        }
+
+        .cambio {
+            width: 100%;
+
+        }
+
+        .cor {
+            width: 100%;
+
+        }
+
+
+
+.resultado {
+    width: 67%;
+    margin-left: 3%;
+    
+}
+
+.tamanho-resultado {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.produto {
+    max-width: 30%;
+    margin: 0 1%;
+    background-color: #ffffff;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.img-produto {
+    width: 100%;
+}
+
+    .img-produto img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+    }
+
+.descricao-produto {
+    width: 100%;
+}
+
+.marca-descricao-produto {
+    width: 100%;
+    height: 5vw;    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.marca-imagem {
+    width: 25%;
+    height: 100%;
+}
+
+    .marca-imagem img {
+        min-width: 90%;
+        max-width: 90%;
+        height: auto;
+    }
+
+
+.ver-parcelas {
+    height: 4vw;
+    width: 50%;
+    float: right;
+    margin-top: 1%;
+}
+
+    .ver-parcelas button {
+        color: #FFF;
+        background-color: blue;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 10px 10px;
+        font-size: 11px;
+        border: none;
+        max-height: 100%;
+        max-width: 100%;
+        text-align: center;
+        border
+    }
+
+.nome-veiculo {
+    width: 100%;
+    height: 18%;
+    font-weight: bold;
+}
+
+.info-descricao-produto {
+    width: 100%;
+    height: 18%;
+}
+
+.info-produto {
+}
+
+.ano-produto {
+}
+
+.valor-produto {
+    width: 100%;
+    height: 32%;
+    justify-content: center;
+    vertical-align: central;
+    margin-bottom: 1vw;
+    font-weight: bold;
+}
+
+.produto label{
+    color: black;
+    margin-top: 2%;
+}
+
+.Text {
+    max-width: 40%;
+    height: 55%;
+    margin: 0 5%;
+}
+
+@media (max-width: 500px) {
+    main{
+        
+        display: block;
+    }
+    
+    .filtro {
+        width: 90%;
+        margin: 2% 0 0 3%;
+    }
+    .resultado{
+        width: 100%;
+        justify-content: center;
+    }
+    .tamanho-resultado {
+        width: 100%;
+        justify-content:center;
+    }
+
+    .produto {
+        max-width: 80%;
+    }
+
+    .img-produto {
+        min-width: 100%;
+    }
+
+        .img-produto img {
+            min-width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+        }
+
+    .descricao-produto {
+        min-width: 100%;
+    }
+
+    .marca-descricao-produto {
+        width: 96%;
+        display: flex;
+        height: 15vw;
+        justify-content: space-between;
+        margin: 0 2%;
+        align-items: center;
+    }
+
+    .ver-parcelas button {
+        height: 100%;
+        font-size: 15px;
+    }
+
+    .nome-veiculo {
+        font-size: 30px;
+    }
+
+    .info-descricao-produto {
+        font-size: 30px;
+    }
+
+    .valor-produto {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 730px) {
+    main{
+        display: block;
+    }
+    .filtro {
+        width: 84%;
+        margin: 2% 8%;
+    }
+
+    .tamanho-filtro{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .resultado{
+        width: 100%;
+    }
+    .tamanho-resultado {
+        justify-content: center;
+    }
+
+    .produto {
+        min-width: 43%;
+    }
+
+    .marca-descricao-produto {
+        width: 100%;
+        height: 15vw;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    .marca-imagem {
+        width: 35%;
+        height: auto;
+    }
+    .ver-parcelas{
+        width:  50%;
+        margin-right: 3%;
+    }
+    .ver-parcelas button {
+        font-size: 10px;
+    }
+
+    .nome-veiculo {
+        font-size: 16px;
+    }
+
+    .info-descricao-produto {
+        font-size: 16px;
+    }
+
+    .valor-produto {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:731px) and (max-width:900px) {
+    main {
+        display: block;
+    }
+
+    .filtro {
+        width: 84%;
+        margin: 2% 8%;
+    }
+
+    .tamanho-filtro {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .resultado {
+        width: 100%;
+    }
+
+    .tamanho-resultado {
+        justify-content: center;
+    }
+
+    .produto {
+        min-width: 43%;
+    }
+
+    .marca-descricao-produto {
+        height: 10vw;
+        align-items: center;
+    }
+
+
+    .marca-imagem {
+        width: 27%;
+        height: auto;
+    }
+
+    .ver-parcelas button {
+        font-size: 10px;
+        width: 70%;
+        height: 6vw;
+    }
+
+    .nome-veiculo {
+        font-size: 16px;
+    }
+
+    .info-descricao-produto {
+        font-size: 16px;
+    }
+
+    .valor-produto {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:900px) and (max-width: 1075px) {
+    main {
+        display: flex;
+    }
+
+    .filtro {
+        width: 27%;
+        margin: 2% 0 0 3%;
+    }
+
+    .tamanho-filtro {
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        margin-bottom: 2vw;
+    }
+
+    .resultado {
+        width: 67%;
+    }
+
+    .tamanho-resultado {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .produto {
+        min-width: 23%;
+    }
+
+    .marca-descricao-produto {
+        height: 8vw;
+        align-items: center;
+    }
+
+
+    .marca-imagem {
+        width: 35%;
+        height: auto;
+        justify-content: space-between;
+    }
+
+    .ver-parcelas{
+        width: 55%;
+    }
+
+    .ver-parcelas button {
+        font-size: 10px;
+        width: 90%;
+        height: 5vw;
+    }
+
+    .nome-veiculo {
+        font-size: 16px;
+    }
+
+    .info-descricao-produto {
+        font-size: 16px;
+    }
+
+    .valor-produto {
+        font-size: 16px;
+    }
+}
